@@ -5,4 +5,4 @@ The application has 2 types of users, users with administrator role and users wi
 * The administrator manages users and assigns them tasks
 * The users have several tasks assigned by the administrator that can finish
 
-![general_functionality](https://image.ibb.co/f5kdFT/Untitled_Diagram.png)
+![general_functionality](https://image.ibb.co/jT1UN8/general_functionality.png)
