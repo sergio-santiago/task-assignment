@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}User {{ user.id }} view{% endblock %}
 
-{% block body %}
+{% block main %}
     <ul>
         <li>ID: {{ user.id }}</li>
         <li>Username: {{ user.username }}</li>
