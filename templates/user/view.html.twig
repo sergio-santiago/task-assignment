@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User {{ user.id }} view{% endblock %}
+
+{% block body %}
+    <ul>
+        <li>ID: {{ user.id }}</li>
+        <li>Username: {{ user.username }}</li>
+        <li>Name: {{ user.firstName }} {{ user.lastName }}</li>
+        <li>email: {{ user.email }}</li>
+        <li>Role: {{ user.role }}</li>
+        <li>Is active?: {{ user.isActive ? 'Yes' : 'No'}}</li>
+        <li>Created at: {{ user.createdAt|date("d/m/Y H:i:s") }}</li>
+        <li>Updated at:  {{ user.updatedAt|date("d/m/Y H:i:s") }}</li>
+    </ul>
+{% endblock %}
