@@ -16,4 +16,15 @@ class UserController extends Controller
             'users' => $users
         ]);
     }
+
+    public function view($id)
+    {
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $user = $repository->find($id);
+        //$user = $repository->findOneBy(['id' => $id]);
+
+        return $this->render('user/view.html.twig', [
+            'user' => $user
+        ]);
+    }
 }
