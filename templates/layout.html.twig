@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Task assignment{% endblock %}
+
+{% block stylesheets %}
+    {# aqui CSS del layout #}
+    {% block stylesheets_adhoc %}{% endblock %}{# para CSS especifico de hijos #}
+{% endblock %}
+
+{% block body %}
+    {% block header %}{# aqui header del layout #}{% endblock %}
+    {% block main %}{% endblock %}{# para el contenido de la pagina mostrado por los hijos #}
+    {% block footer %}{# aqui footer del layout #}{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {# aqui JS del layout #}
+    {% block javascripts_adhoc %}{% endblock %}{# para JS especifico de hijos #}
+{% endblock %}
