@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Testing {{ controller_name }}{% endblock %}
+{% block title %}Users List{% endblock %}
 
 {% block body %}
-    <h1>Hello, <i>{{ controller_name }}</i> is working!</h1>
+    <h3>Users</h3>
+    <ul>
+        {% for user in users %}
+            <li>USER {{ user.id }}: {{ user.username }} - {{ user.email }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
