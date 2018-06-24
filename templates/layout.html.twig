@@ -3,7 +3,7 @@
 {% block title %}Task assignment{% endblock %}
 
 {% block stylesheets %}
-    {# aqui CSS del layout #}
+    <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
     {% block stylesheets_adhoc %}{% endblock %}{# para CSS especifico de hijos #}
 {% endblock %}
 
@@ -14,6 +14,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    {# aqui JS del layout #}
+    <script src="{{ asset('build/js/app.js') }}"></script>
     {% block javascripts_adhoc %}{% endblock %}{# para JS especifico de hijos #}
 {% endblock %}
