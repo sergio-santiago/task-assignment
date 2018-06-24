@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    {% block header %}{# aqui header del layout #}{% endblock %}
+    {% include 'menu.html.twig' %}
     {% block main %}{% endblock %}{# para el contenido de la pagina mostrado por los hijos #}
     {% block footer %}{# aqui footer del layout #}{% endblock %}
 {% endblock %}
