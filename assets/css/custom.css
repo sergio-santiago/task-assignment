@@ -1,3 +1,7 @@
+body {
+    padding-top: 70px;
+}
+
 .custom-action-button {
     width: 30px !important;
 }

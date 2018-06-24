@@ -11,7 +11,7 @@
 {% block body %}
     {% include 'menu.html.twig' %}
     {% block main %}{% endblock %}{# para el contenido de la pagina mostrado por los hijos #}
-    {% block footer %}{# aqui footer del layout #}{% endblock %}
+    {% include 'footer.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}
