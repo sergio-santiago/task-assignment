@@ -6,11 +6,11 @@
     <div class="container">
         <div class="col-md-12">
             <div class="row well">
-                <div class="page-header">
+                <div class="page-header custom-form-page-header">
                     <h2>New user</h2>
                 </div>
 
-                {{ form_start(form, {'attr': {'role': 'form'} }) }}
+                {{ form_start(form, { 'attr': { 'role': 'form' } }) }}
 
                 <div class="form-group">
                     {{ form_label(form.username) }}
@@ -54,7 +54,7 @@
                 </div>
 
                 <p class="custom-create-user-button">
-                    {{ form_widget(form.save, {'label' : 'Create user', 'attr': { 'class': 'btn btn-success btn-block btn-lg' }}) }}
+                    {{ form_widget(form.save, {'label' : 'Create user', 'attr': { 'class': 'btn btn-success btn-block btn-lg' } }) }}
                 </p>
 
                 {{ form_end(form) }}
