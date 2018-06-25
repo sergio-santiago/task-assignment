@@ -39,13 +39,16 @@ class UserController extends Controller
                 $em->persist($user);
                 $em->flush();
 
-                $this->addFlash('success', 'The user ' . $user->getUsername() . ' has been created');
+                $translatedMessage = $this->get('translator')->trans('The user was created correctly');
+                $this->addFlash('success', $translatedMessage);
+
                 return $this->redirectToRoute('user_index');
             } catch (\Exception $exception) {
                 if ($_ENV['APP_ENV'] == "dev") {
                     throw $exception;
                 } else {
-                    $this->addFlash('danger', 'An error occurred while creating the user');
+                    $translatedError = $this->get('translator')->trans('An error occurred while creating the user');
+                    $this->addFlash('danger', $translatedError);
                 }
             }
         }

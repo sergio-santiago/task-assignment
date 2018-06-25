@@ -1,25 +1,25 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}List users{% endblock %}
+{% block title %}{% trans %}List users{% endtrans %}{% endblock %}
 
 {% block main %}
     <div class="container">
         <div class="col-md-12">
             <div class="page-header">
-                <h2>Users</h2>
+                <h2>{% trans %}Users{% endtrans %}</h2>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Created</th>
-                        <th>Updated</th>
-                        <th class="text-center custom-action-buttons-col">Actions</th>
+                        <th>{% trans %}Username{% endtrans %}</th>
+                        <th>{% trans %}First name{% endtrans %}</th>
+                        <th>{% trans %}Last name{% endtrans %}</th>
+                        <th>{% trans %}Email{% endtrans %}</th>
+                        <th>{% trans %}Role{% endtrans %}</th>
+                        <th>{% trans %}Created{% endtrans %}</th>
+                        <th>{% trans %}Updated{% endtrans %}</th>
+                        <th class="text-center custom-action-buttons-col">{% trans %}Actions{% endtrans %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,22 +31,22 @@
                             <td>{{ user.email }}</td>
                             <td>
                                 {% if user.role == 'ROLE_ADMIN' %}
-                                    <strong>Admin</strong>
+                                    <strong>{% trans %}Admin{% endtrans %}</strong>
                                 {% elseif user.role == 'ROLE_USER' %}
-                                    <strong>User</strong>
+                                    <strong>{% trans %}User{% endtrans %}</strong>
                                 {% endif %}
                             </td>
                             <td>{{ user.createdAt|date('d-m-Y H:i') }}</td>
                             <td>{{ user.updatedAt|date('d-m-Y H:i') }}</td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="#" class="btn btn-sm btn-info custom-action-button" title="view">
+                                    <a href="#" class="btn btn-sm btn-info custom-action-button" title="{% trans %}view{% endtrans %}">
                                         <i class="fa fa-info"></i>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-primary custom-action-button" title="edit">
+                                    <a href="#" class="btn btn-sm btn-primary custom-action-button" title="{% trans %}edit{% endtrans %}">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-danger custom-action-button" title="delete">
+                                    <a href="#" class="btn btn-sm btn-danger custom-action-button" title="{% trans %}delete{% endtrans %}">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </div>

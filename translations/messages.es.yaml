@@ -1,0 +1,30 @@
+New user: Crear usuario
+List users: Listar usuarios
+Username: Nombre de usuario
+First name: Nombre
+Last name: Apellidos
+Email: Correo electrónico
+Password: Contraseña
+Role: Rol
+Is active?: ¿Está activo?
+Create user: Crear usuario
+Your username: Ingrese un nombre de usuario
+Your first name: Ingrese su nombre
+Your last name: Ingrese sus apellidos
+Your email: Ingrese su correo electronico
+Your password: Ingrese una contraseña
+Select role: Elige un rol
+Task Assignment: Asignación de Tareas
+Users: Usuarios
+User: Usuario
+Admin: Administrador
+Site built by: Sitio contruido por
+GitHub Page: Pagina de GitHub
+Created: Creado
+Updated: Modificado
+Actions: Acciones
+view: ver
+edit: editar
+delete: eliminar
+An error occurred while creating the user: Se produjo un error al crear el usuario
+The user was created correctly: El usuario fue creado correctamente
