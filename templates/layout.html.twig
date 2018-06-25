@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block body %}
-    {% include 'menu.html.twig' %}
-    {% include 'flash_messages.html.twig' %}
+    {% include 'layout_pieces/menu.html.twig' %}
+    {% include 'layout_pieces/flash_messages.html.twig' %}
     {% block main %}{% endblock %}{# para el contenido de la pagina mostrado por los hijos #}
-    {% include 'footer.html.twig' %}
+    {% include 'layout_pieces/footer.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}
