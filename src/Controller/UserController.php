@@ -19,6 +19,9 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function add(Request $request)
     {
         $user = new User();
@@ -39,7 +42,11 @@ class UserController extends Controller
                 $this->addFlash('success', 'The user ' . $user->getUsername() . ' has been created');
                 return $this->redirectToRoute('user_index');
             } catch (\Exception $exception) {
-                $this->addFlash('danger', 'An error occurred while creating the user');
+                if ($_ENV['APP_ENV'] == "dev") {
+                    throw $exception;
+                } else {
+                    $this->addFlash('danger', 'An error occurred while creating the user');
+                }
             }
         }
 
