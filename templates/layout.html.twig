@@ -10,6 +10,7 @@
 
 {% block body %}
     {% include 'menu.html.twig' %}
+    {% include 'flash_messages.html.twig' %}
     {% block main %}{% endblock %}{# para el contenido de la pagina mostrado por los hijos #}
     {% include 'footer.html.twig' %}
 {% endblock %}

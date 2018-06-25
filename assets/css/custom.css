@@ -10,3 +10,7 @@ body {
 .custom-action-buttons-col {
     min-width: 125px !important;
 }
+
+.custom-create-user-button {
+    margin-top: 20px !important;
+}
