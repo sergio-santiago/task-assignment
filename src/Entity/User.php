@@ -10,8 +10,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity("username")
- * @UniqueEntity("email")
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="There is already another user registered with that username"
+ * )
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="There is already another user registered with that email"
+ * )
  * @ORM\HasLifecycleCallbacks()
  */
 class User implements UserInterface
@@ -24,40 +30,74 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=50, unique=true)
+     * @Assert\NotBlank(
+     *     message="The username can not be empty"
+     * )
+     * @Assert\Length(
+     *     max="50",
+     *     maxMessage="The username has exceeded the maximum length"
+     * )
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message="The first name can not be empty"
+     * )
+     * @Assert\Length(
+     *     max="100",
+     *     maxMessage="The first name has exceeded the maximum length"
+     * )
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message="The last name can not be empty"
+     * )
+     * @Assert\Length(
+     *     max="100",
+     *     maxMessage="The last name has exceeded the maximum length"
+     * )
      */
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank()
-     * @Assert\Email()
+     * @ORM\Column(type="string", length=100, unique=true)
+     * @Assert\NotBlank(
+     *     message="The email can not be empty"
+     * )
+     * @Assert\Email(
+     *     message="The email entered is not valid"
+     * )
+     * @Assert\Length(
+     *     max="100",
+     *     maxMessage="The email has exceeded the maximum length"
+     * )
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message="The password can not be empty"
+     * )
+     * @Assert\Length(
+     *     max="255",
+     *     maxMessage="The password has exceeded the maximum length"
+     * )
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", columnDefinition="ENUM('ROLE_ADMIN', 'ROLE_USER')", length=50)
      * @Assert\Choice(choices={"ROLE_ADMIN", "ROLE_USER"}, message="Choose a valid role.")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message="Tou must select a role from the list"
+     * )
      */
     private $role;
 
