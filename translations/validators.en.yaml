@@ -1,0 +1,15 @@
+There is already another user registered with that username: There is already another user registered with that username
+There is already another user registered with that email: There is already another user registered with that email
+The username can not be empty: The username can not be empty
+The username has exceeded the maximum length: The username has exceeded the maximum length
+The first name can not be empty: The first name can not be empty
+The first name has exceeded the maximum length: The first name has exceeded the maximum length
+The last name can not be empty: The last name can not be empty
+The last name has exceeded the maximum length: The last name has exceeded the maximum length
+The email can not be empty: The email can not be empty
+The email entered is not valid: The email entered is not valid
+The email has exceeded the maximum length: The email has exceeded the maximum length
+The password can not be empty: The password can not be empty
+The password has exceeded the maximum length: The password has exceeded the maximum length
+Choose a valid role: Choose a valid role
+You must select a role from the list: You must select a role from the list

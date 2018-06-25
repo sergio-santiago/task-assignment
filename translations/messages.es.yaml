@@ -28,3 +28,6 @@ edit: editar
 delete: eliminar
 An error occurred while creating the user: Se produjo un error al crear el usuario
 The user was created correctly: El usuario fue creado correctamente
+Language: Idioma
+English: Inglés
+Spanish: Español
