@@ -94,9 +94,12 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", columnDefinition="ENUM('ROLE_ADMIN', 'ROLE_USER')", length=50)
-     * @Assert\Choice(choices={"ROLE_ADMIN", "ROLE_USER"}, message="Choose a valid role.")
+     * @Assert\Choice(
+     *     choices={"ROLE_ADMIN", "ROLE_USER"},
+     *     message="Choose a valid role"
+     * )
      * @Assert\NotBlank(
-     *     message="Tou must select a role from the list"
+     *     message="You must select a role from the list"
      * )
      */
     private $role;

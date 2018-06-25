@@ -1,0 +1,15 @@
+There is already another user registered with that username: Ya existe otro usuario registrado con ese nombre de usuario
+There is already another user registered with that email: Ya existe otro usuario registrado con ese correo electrónico
+The username can not be empty: El nombre de usuario no puede estar vacío
+The username has exceeded the maximum length: El nombre de usuario excede la longitud máxima
+The first name can not be empty: El nombre no puede estar vacío
+The first name has exceeded the maximum length: El nombre excede la longitud máxima
+The last name can not be empty: Los apellidos no pueden estar vacíos
+The last name has exceeded the maximum length: Los apellidos exceden la longitud máxima
+The email can not be empty: El correo electrónico no puede estar vacío
+The email entered is not valid: El correo electrónico introducido no es válido
+The email has exceeded the maximum length: El correo electrónico excede la longitud máxima
+The password can not be empty: La contraseña no puede estar vacía
+The password has exceeded the maximum length: La contraseña excede la longitud máxima
+Choose a valid role: Elige un rol válido
+You must select a role from the list: Debes selecionar un rol de la lista
