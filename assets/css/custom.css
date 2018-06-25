@@ -18,3 +18,9 @@ body {
 .custom-form-page-header {
     margin-top: 20px !important;
 }
+
+.custom-span-form-error {
+    display: inline-block !important;
+    margin: 10px 10px 0 0 !important;
+    padding: 5px !important;
+}
