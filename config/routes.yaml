@@ -1,29 +1,35 @@
 user_index:
-    path: /{_locale}/user/index
+    path:
+        en: /user/index
+        es: /usuario/indice
     controller: App\Controller\UserController::index
-    requirements:
-        _locale: '%app.locales%'
 
 user_add:
-    path: /{_locale}/user/add
+    path:
+        en: /user/add
+        es: /usuario/crear
     controller: App\Controller\UserController::add
-    requirements:
-        _locale: '%app.locales%'
 
 user_edit:
-    path: /{_locale}/user/edit/{id}
+    path:
+        en: /user/edit/{id}
+        es: /usuario/editar/{id}
     controller: App\Controller\UserController::edit
     requirements:
-        _locale: '%app.locales%'
+        id: '\d+'
 
 user_view:
-    path: /{_locale}/user/view/{id}
+    path:
+        en: /user/view/{id}
+        es: /usuario/ver/{id}
     controller: App\Controller\UserController::view
     requirements:
-        _locale: '%app.locales%'
+        id: '\d+'
 
 user_delete:
-    path: /{_locale}/user/delete/{id}
+    path:
+        en: /user/delete/{id}
+        es: /usuario/eliminar/{id}
     controller: App\Controller\UserController::delete
     requirements:
-        _locale: '%app.locales%'
+        id: '\d+'
