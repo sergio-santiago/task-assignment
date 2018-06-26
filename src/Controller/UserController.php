@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $em = $this->get('doctrine.orm.entity_manager');
-        $dql = 'SELECT u FROM App\Entity\User u';
+        $dql = 'SELECT u FROM App\Entity\User u ORDER BY u.id DESC';
         $query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
