@@ -9,13 +9,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository(User::class)->findAll();
+        $em = $this->get('doctrine.orm.entity_manager');
+        $dql = 'SELECT u FROM App\Entity\User u';
+        $query = $em->createQuery($dql);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, $request->query->getInt('page', 1), 10
+        );
 
         return $this->render('user/index.html.twig', [
-            'users' => $users
+            'pagination' => $pagination
         ]);
     }
 
