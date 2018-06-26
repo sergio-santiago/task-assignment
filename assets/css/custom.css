@@ -34,3 +34,11 @@ body {
 .custom-actions-table-header {
     color: #337ab8 !important;
 }
+
+.custom-text-red {
+    color: #d9534f;
+}
+
+.custom-text-green {
+    color: #5bb85c;
+}

@@ -20,6 +20,7 @@
                         <th>{{ knp_pagination_sortable(pagination, 'Last name'|trans, 'u.lastName') }}</th>
                         <th>{{ knp_pagination_sortable(pagination, 'Email'|trans, 'u.email') }}</th>
                         <th>{{ knp_pagination_sortable(pagination, 'Role'|trans, 'u.role') }}</th>
+                        <th>{{ knp_pagination_sortable(pagination, 'Is active?'|trans, 'u.role') }}</th>
                         <th>{{ knp_pagination_sortable(pagination, 'Created'|trans, 'u.createdAt') }}</th>
                         <th>{{ knp_pagination_sortable(pagination, 'Updated'|trans, 'u.updatedAt') }}</th>
                         <th class="text-center custom-action-buttons-col custom-actions-table-header">{% trans %}Actions{% endtrans %}</th>
@@ -39,6 +40,13 @@
                                     <strong>{% trans %}User{% endtrans %}</strong>
                                 {% endif %}
                             </td>
+                            <td class="text-center">
+                                {% if user.isActive %}
+                                    <i class="fa fa-check custom-text-green" title="{% trans %}yes{% endtrans %}"></i>
+                                {% else %}
+                                    <i class="fa fa-times custom-text-red" title="{% trans %}no{% endtrans %}"></i>
+                                {% endif %}
+                            </td>
                             <td>{{ user.createdAt|date('d-m-Y H:i') }}</td>
                             <td>{{ user.updatedAt|date('d-m-Y H:i') }}</td>
                             <td class="text-center">
@@ -46,7 +54,7 @@
                                     <a href="#" class="btn btn-sm btn-info custom-action-button" title="{% trans %}view{% endtrans %}">
                                         <i class="fa fa-info"></i>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-primary custom-action-button" title="{% trans %}edit{% endtrans %}">
+                                    <a href="{{ path('user_edit', { id: user.id }) }}" class="btn btn-sm btn-primary custom-action-button" title="{% trans %}edit{% endtrans %}">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <a href="#" class="btn btn-sm btn-danger custom-action-button" title="{% trans %}delete{% endtrans %}">
