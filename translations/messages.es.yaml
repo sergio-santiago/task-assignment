@@ -1,6 +1,6 @@
 New user: Crear usuario
 List users: Listar usuarios
-Username: Usuario
+Username: Nombre de usuario
 First name: Nombre
 Last name: Apellidos
 Email: Correo electrónico
@@ -17,8 +17,8 @@ Select role: Elige un rol
 Task Assignment: Asignación de Tareas
 Users: Usuarios
 User: Usuario
-Admin: Admin
-Site built by: Sitio creado por
+Admin: Administrador
+Site built by: Sitio desarrollado por
 GitHub Page: Pagina de GitHub
 Created: Creado
 Updated: Modificado
@@ -31,3 +31,4 @@ The user was created correctly: El usuario fue creado correctamente
 Language: Idioma
 English: Inglés
 Spanish: Español
+Total records: Registros totales
