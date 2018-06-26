@@ -8,7 +8,9 @@
             <div class="page-header">
                 <h2>{% trans %}Users{% endtrans %}</h2>
             </div>
-            {% trans %}Total records{% endtrans %}: {{ pagination.getTotalItemCount }}
+            <span class="label label-primary custom-label-item-count">
+                {% trans %}Total records{% endtrans %}: {{ pagination.getTotalItemCount }}
+            </span>
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -20,7 +22,7 @@
                         <th>{{ knp_pagination_sortable(pagination, 'Role'|trans, 'u.role') }}</th>
                         <th>{{ knp_pagination_sortable(pagination, 'Created'|trans, 'u.createdAt') }}</th>
                         <th>{{ knp_pagination_sortable(pagination, 'Updated'|trans, 'u.updatedAt') }}</th>
-                        <th class="text-center custom-action-buttons-col">{% trans %}Actions{% endtrans %}</th>
+                        <th class="text-center custom-action-buttons-col custom-actions-table-header-text">{% trans %}Actions{% endtrans %}</th>
                     </tr>
                     </thead>
                     <tbody>
