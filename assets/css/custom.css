@@ -47,3 +47,7 @@ body {
     width: 100% !important;;
     margin-bottom: 10px !important;
 }
+
+.is-active-checkbox-help-js {
+    display: none;
+}
