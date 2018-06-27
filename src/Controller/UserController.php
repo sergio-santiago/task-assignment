@@ -6,6 +6,8 @@ use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\FormError;
 
 class UserController extends Controller
 {
@@ -35,17 +37,84 @@ class UserController extends Controller
 
         $form->handleRequest($request);
 
+        if ($form->isSubmitted()) {
+            $pass = $form->get('password')->getData();
+            $passConstarint = new Assert\NotBlank(['message' => 'The password can not be empty']);
+            $errorList = $this->get('validator')->validate($pass, $passConstarint);
+            $passValid = (count($errorList) == 0) ? true : false;
+
+            if (!$passValid) {
+                foreach ($errorList as $error) {
+                    $formError = new FormError($error->getMessage());
+                    $form->get('password')->addError($formError);
+                }
+            }
+
+            if ($form->isValid() && $passValid) {
+                try {
+                    $encodedPass = $this->container->get('security.password_encoder')->encodePassword($user, $pass);
+                    $user->setPassword($encodedPass);
+
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($user);
+                    $em->flush();
+
+                    $translatedMessage = $this->get('translator')->trans('The user was created correctly');
+                    $this->addFlash('success', $translatedMessage);
+
+                    return $this->redirectToRoute('user_index');
+                } catch (\Exception $exception) {
+                    if ($_ENV['APP_ENV'] == "dev") {
+                        throw $exception;
+                    } else {
+                        $translatedError = $this->get('translator')->trans('An error occurred while creating the user');
+                        $this->addFlash('danger', $translatedError);
+                    }
+                }
+            }
+        }
+
+        return $this->render('user/add.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function edit($id, Request $request)
+    {
+        //$em = $this->get('doctrine.orm.entity_manager');
+        $em = $this->get('doctrine.orm.entity_manager');
+        $user = $em->getRepository(User::class)->find($id);
+
+        if (!$user) {
+            $messageException = $this->get('translator')->trans('User not found');
+            throw $this->createNotFoundException($messageException);
+        }
+
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $pass = $form->get('password')->getData();
-                $encodedPass = $this->container->get('security.password_encoder')->encodePassword($user, $pass);
-                $user->setPassword($encodedPass);
+                if (!empty($pass)) {
+                    $encodedPass = $this->container->get('security.password_encoder')->encodePassword($user, $pass);
+                    $user->setPassword($encodedPass);
+                } else {
+                    $query = $em->createQuery(
+                        'SELECT u.password FROM App\Entity\User u WHERE u.id = :id'
+                    )->setParameter('id', $id);
+                    $currentPass =  $query->execute();
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
+                    $user->setPassword($currentPass[0]['password']);
+                }
+
                 $em->flush();
 
-                $translatedMessage = $this->get('translator')->trans('The user was created correctly');
+                $translatedMessage = $this->get('translator')->trans('The user was updated correctly');
                 $this->addFlash('success', $translatedMessage);
 
                 return $this->redirectToRoute('user_index');
@@ -53,13 +122,14 @@ class UserController extends Controller
                 if ($_ENV['APP_ENV'] == "dev") {
                     throw $exception;
                 } else {
-                    $translatedError = $this->get('translator')->trans('An error occurred while creating the user');
+                    $translatedError = $this->get('translator')->trans('An error occurred while updating the user');
                     $this->addFlash('danger', $translatedError);
                 }
             }
         }
 
-        return $this->render('user/add.html.twig', [
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
             'form' => $form->createView()
         ]);
     }

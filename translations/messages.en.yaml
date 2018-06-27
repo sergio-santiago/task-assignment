@@ -32,3 +32,12 @@ Language: Language
 English: English
 Spanish: Spanish
 Total records: Total records
+User not found: User not found
+Edit user: Edit user
+Update user: Update user
+An error occurred while updating the user: An error occurred while updating the user
+The user was updated correctly: The user was updated correctly
+If you leave the empty password, the one you currently use will be retained: If you leave the empty password, the one you currently use will be retained
+yes: yes
+no: no
+You can not deactivate the user because it has role admin: You can not deactivate the user because it has role admin

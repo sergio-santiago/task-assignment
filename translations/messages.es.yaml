@@ -32,3 +32,12 @@ Language: Idioma
 English: Inglés
 Spanish: Español
 Total records: Registros totales
+User not found: Usuario no encontrado
+Edit user: Editar usuario
+Update user: Actualizar usuario
+An error occurred while updating the user: Se produjo un error al actualizar al usuario
+The user was updated correctly: El usuario se actualizó correctamente
+If you leave the empty password, the one you currently use will be retained: Si deja la contraseña vacía, se conservará la que usa actualmente
+yes: si
+no: no
+You can not deactivate the user because it has role admin: No puede desactivar al usuario porque tiene un rol administrador
