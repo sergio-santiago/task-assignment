@@ -246,6 +246,15 @@ class User implements UserInterface
         $this->updatedAt = new \DateTime();
     }
 
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function setActiveIfIsAdmin()
+    {
+        if ($this->getRole() == 'ROLE_ADMIN') $this->setIsActive(true);
+    }
+
     public function getRoles()
     {
         // TODO: Implement getRoles() method.
