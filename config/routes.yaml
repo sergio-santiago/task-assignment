@@ -33,3 +33,4 @@ user_delete:
     controller: App\Controller\UserController::delete
     requirements:
         id: '\d+'
+    methods: [DELETE]

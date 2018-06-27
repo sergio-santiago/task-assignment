@@ -41,3 +41,9 @@ If you leave the empty password, the one you currently use will be retained: If 
 yes: yes
 no: no
 You can not deactivate the user because it has role admin: You can not deactivate the user because it has role admin
+View user: View user
+Enable: Enable
+Disabled: Disabled
+Are you sure?: Are you sure?
+The user was successfully deleted: The user was successfully deleted
+An error occurred while deleting the user: An error occurred while deleting the user

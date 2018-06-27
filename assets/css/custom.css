@@ -1,6 +1,6 @@
 body {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
 }
 
 .custom-action-button {
@@ -36,11 +36,11 @@ body {
 }
 
 .custom-text-red {
-    color: #d9534f;
+    color: #d9534f !important;
 }
 
 .custom-text-green {
-    color: #5bb85c;
+    color: #5bb85c !important;
 }
 .custom-form-text-help {
     display: inline-block !important;
@@ -49,5 +49,9 @@ body {
 }
 
 .is-active-checkbox-help-js {
-    display: none;
+    display: none !important;
+}
+
+.custom-action-button-big {
+    height: 100px !important;
 }

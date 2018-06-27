@@ -1,16 +1,80 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}User {{ user.id }} view{% endblock %}
+{% block title %}{% trans %}View user{% endtrans %}{% endblock %}
 
 {% block main %}
-    <ul>
-        <li>ID: {{ user.id }}</li>
-        <li>Username: {{ user.username }}</li>
-        <li>Name: {{ user.firstName }} {{ user.lastName }}</li>
-        <li>email: {{ user.email }}</li>
-        <li>Role: {{ user.role }}</li>
-        <li>Is active?: {{ user.isActive ? 'Yes' : 'No'}}</li>
-        <li>Created at: {{ user.createdAt|date("d/m/Y H:i:s") }}</li>
-        <li>Updated at:  {{ user.updatedAt|date("d/m/Y H:i:s") }}</li>
-    </ul>
+    <div class="container well">
+
+        <div class="col-md-9">
+            <h2>{{ user.firstName }} {{ user.lastName }}</h2><br>
+        </div>
+
+        <div class="col-md-3 text-center">
+            <h3>{% trans %}Actions{% endtrans %}</h3>&nbsp;
+        </div>
+
+        <div class="col-md-5">
+            <dl>
+                <dt>{% trans %}Username{% endtrans %}</dt>
+                <dd>{{ user.username }}&nbsp;</dd>&nbsp;
+
+                <dt>{% trans %}First name{% endtrans %}</dt>
+                <dd>{{ user.firstName }}&nbsp;</dd>&nbsp;
+
+                <dt>{% trans %}Last name{% endtrans %}</dt>
+                <dd>{{ user.lastName }}&nbsp;</dd>&nbsp;
+
+                <dt>{% trans %}Email{% endtrans %}</dt>
+                <dd>{{ user.email }}&nbsp;</dd>&nbsp;
+            </dl>
+        </div>
+
+        <div class="col-md-4">
+            <dl>
+                <dt>{% trans %}Role{% endtrans %}</dt>
+                <dd>
+                    {% if user.role == 'ROLE_ADMIN' %}
+                        {% trans %}Admin{% endtrans %}
+                    {% elseif user.role == 'ROLE_USER' %}
+                        {% trans %}User{% endtrans %}
+                    {% endif %}&nbsp;
+                </dd>&nbsp;
+
+                <dt>{% trans %}Is active?{% endtrans %}</dt>
+                <dd>
+                    {% if user.isActive %}
+                        <span class="custom-text-green"><b>{% trans %}Enable{% endtrans %}</b></span>
+                    {% else %}
+                        <span class="custom-text-red"><b>{% trans %}Disabled{% endtrans %}</b></span>
+                    {% endif %}&nbsp;
+                </dd>&nbsp;
+
+                <dt>{% trans %}Created{% endtrans %}</dt>
+                <dd>{{ user.createdAt|date('d-m-Y H:i:s') }}&nbsp;</dd>&nbsp;
+
+                <dt>{% trans %}Updated{% endtrans %}</dt>
+                <dd>{{ user.updatedAt|date('d-m-Y H:i:s') }}&nbsp;</dd>&nbsp;
+            </dl>
+        </div>
+
+        <div class="col-md-3">
+            <p>
+                <a href="{{ path('user_edit', { id: user.id }) }}">
+                    <button type="button" class="btn btn-lg btn-primary btn-block custom-action-button-big" title="{% trans %}edit{% endtrans %}">
+                        <i class="fa fa-pencil-square-o fa-3x"></i>
+                    </button>
+                </a>
+            </p>
+
+            <p>
+                {{ form_start(delete_form) }}
+                {{ form_widget(delete_form) }}
+                <button type="submit" class="btn btn-lg btn-danger btn-block custom-action-button-big" title="{% trans %}delete{% endtrans %}" onclick="return confirm('{% trans %}Are you sure?{% endtrans %}')">
+                    <i class="fa fa-trash-o fa-3x"></i>
+                </button>
+                {{ form_end(delete_form) }}
+            </p>
+        </div>
+    </div>
+
 {% endblock %}
