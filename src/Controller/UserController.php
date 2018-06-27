@@ -107,7 +107,7 @@ class UserController extends Controller
                     $query = $em->createQuery(
                         'SELECT u.password FROM App\Entity\User u WHERE u.id = :id'
                     )->setParameter('id', $id);
-                    $currentPass =  $query->execute();
+                    $currentPass = $query->execute();
 
                     $user->setPassword($currentPass[0]['password']);
                 }
@@ -147,8 +147,7 @@ class UserController extends Controller
         $deleteForm = $this->createFormBuilder()
             ->setAction($this->generateUrl('user_delete', ['id' => $user->getId()]))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
 
         return $this->render('user/view.html.twig', [
             'user' => $user,
@@ -174,8 +173,7 @@ class UserController extends Controller
             $deleteForm = $this->createFormBuilder()
                 ->setAction($this->generateUrl('user_delete', ['id' => $user->getId()]))
                 ->setMethod('DELETE')
-                ->getForm()
-            ;
+                ->getForm();
 
             $deleteForm->handleRequest($request);
 

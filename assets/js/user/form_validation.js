@@ -29,9 +29,9 @@ formValidation = function () {
         isActiveCheckboxPermission();
         events();
     };
-    
+
     return {
-        init:init
+        init: init
     }
 }();
 
