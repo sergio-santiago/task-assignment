@@ -82,9 +82,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(
-     *     message="The password can not be empty"
-     * )
      * @Assert\Length(
      *     max="255",
      *     maxMessage="The password has exceeded the maximum length"
