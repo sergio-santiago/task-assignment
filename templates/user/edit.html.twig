@@ -52,7 +52,8 @@
                 </div>
 
                 <div class="checkbox">
-                    <label>{{ form_widget(form.isActive, { 'attr': { 'class': 'is-active-checkbox-input-js' } }) }}<b class="is-active-checkbox-label-js">{% trans %}Is active?{% endtrans %}</b></label>
+                    <label>{{ form_widget(form.isActive, { 'attr': { 'class': 'is-active-checkbox-input-js' } }) }}<b
+                                class="is-active-checkbox-label-js">{% trans %}Is active?{% endtrans %}</b></label>
                     <small class="form-text text-muted is-active-checkbox-help-js">{% trans %}You can not deactivate the user because it has role admin{% endtrans %}</small>
                     <span class="text-danger">{{ form_errors(form.isActive) }}</span>
                 </div>

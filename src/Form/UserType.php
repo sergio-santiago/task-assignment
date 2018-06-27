@@ -31,8 +31,7 @@ class UserType extends AbstractType
                 'placeholder' => 'Select role'
             ])
             ->add('isActive', CheckboxType::class)
-            ->add('save', SubmitType::class)
-        ;
+            ->add('save', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
