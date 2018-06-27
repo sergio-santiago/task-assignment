@@ -51,7 +51,7 @@
                             <td>{{ user.updatedAt|date('d-m-Y H:i') }}</td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="#" class="btn btn-sm btn-info custom-action-button" title="{% trans %}view{% endtrans %}">
+                                    <a href="{{ path('user_view', { id: user.id }) }}" class="btn btn-sm btn-info custom-action-button" title="{% trans %}view{% endtrans %}">
                                         <i class="fa fa-info"></i>
                                     </a>
                                     <a href="{{ path('user_edit', { id: user.id }) }}" class="btn btn-sm btn-primary custom-action-button" title="{% trans %}edit{% endtrans %}">

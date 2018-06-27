@@ -138,10 +138,63 @@ class UserController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository(User::class);
         $user = $repository->find($id);
-        //$user = $repository->findOneBy(['id' => $id]);
+
+        if (!$user) {
+            $messageException = $this->get('translator')->trans('User not found');
+            throw $this->createNotFoundException($messageException);
+        }
+
+        $deleteForm = $this->createFormBuilder()
+            ->setAction($this->generateUrl('user_delete', ['id' => $user->getId()]))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
 
         return $this->render('user/view.html.twig', [
-            'user' => $user
+            'user' => $user,
+            'delete_form' => $deleteForm->createView()
         ]);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function delete(Request $request, $id)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository(User::class);
+            $user = $repository->find($id);
+
+            if (!$user) {
+                $messageException = $this->get('translator')->trans('User not found');
+                throw $this->createNotFoundException($messageException);
+            }
+
+            $deleteForm = $this->createFormBuilder()
+                ->setAction($this->generateUrl('user_delete', ['id' => $user->getId()]))
+                ->setMethod('DELETE')
+                ->getForm()
+            ;
+
+            $deleteForm->handleRequest($request);
+
+            if ($deleteForm->isSubmitted() && $deleteForm->isValid()) {
+                $em->remove($user);
+                $em->flush();
+            }
+
+            $translatedMessage = $this->get('translator')->trans('The user was successfully deleted');
+            $this->addFlash('success', $translatedMessage);
+        } catch (\Exception $exception) {
+            if ($_ENV['APP_ENV'] == "dev") {
+                throw $exception;
+            } else {
+                $translatedError = $this->get('translator')->trans('An error occurred while deleting the user');
+                $this->addFlash('danger', $translatedError);
+            }
+        }
+
+        return $this->redirectToRoute('user_index');
     }
 }
