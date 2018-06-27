@@ -42,3 +42,8 @@ body {
 .custom-text-green {
     color: #5bb85c;
 }
+.custom-form-text-help {
+    display: inline-block !important;
+    width: 100% !important;;
+    margin-bottom: 10px !important;
+}
