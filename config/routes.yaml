@@ -31,6 +31,4 @@ user_delete:
         en: /user/delete/{id}
         es: /usuario/eliminar/{id}
     controller: App\Controller\UserController::delete
-    requirements:
-        id: '\d+'
     methods: [DELETE]
