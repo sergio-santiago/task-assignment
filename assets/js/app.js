@@ -6,7 +6,7 @@ let bootbox = require('bootbox');
  * CONFIRMATION MENU
  * Boton dentro de formulario con =>
  * clase -> launch-confimation-js
- * atributos -> data-message-text data-confirm-text data-cancel-text
+ * atributos -> data-message-text data-confirm-text data-confirm-button-style data-cancel-text data-cancel-button-style
  */
 $('.launch-confimation-js').click(function () {
     bootbox.confirm({
@@ -14,11 +14,11 @@ $('.launch-confimation-js').click(function () {
         buttons: {
             confirm: {
                 label: $(this).data().confirmText,
-                className: 'btn-success'
+                className: 'btn-' + $(this).data().confirmButtonStyle
             },
             cancel: {
                 label: $(this).data().cancelText,
-                className: 'btn-danger'
+                className: 'btn-' + $(this).data().cancelButtonStyle
             }
         },
         callback: function (result) {
