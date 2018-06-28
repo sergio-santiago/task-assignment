@@ -44,8 +44,8 @@ You can not deactivate the user because it has role admin: No puede desactivar a
 View user: Ver usuario
 Enable: Habilitado
 Disabled: Deshabilitado
-Are you sure?: ¿Estás seguro?
+Are you sure you want to delete the user?: ¿Seguro que quieres eliminar al usuario?
 The user was successfully deleted: El usuario fue eliminado con éxito
 An error occurred while deleting the user: Se produjo un error al eliminar el usuario
-Yes: Si
+Yes, delete the user: Si, eliminar al usuario
 No: No
