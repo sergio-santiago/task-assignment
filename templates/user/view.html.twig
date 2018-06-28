@@ -6,58 +6,58 @@
     <div class="container well">
 
         <div class="col-md-9">
-            <h2>{{ user.firstName }} {{ user.lastName }}</h2><br>
-        </div>
+            <div class="col-md-9">
+                <h2>{{ user.firstName }} {{ user.lastName }}</h2><br>
+            </div>
 
-        <div class="col-md-3 text-center">
-            <h3>{% trans %}Actions{% endtrans %}</h3>&nbsp;
-        </div>
+            <div class="col-md-5">
+                <dl>
+                    <dt>{% trans %}Username{% endtrans %}</dt>
+                    <dd>{{ user.username }}&nbsp;</dd>&nbsp;
 
-        <div class="col-md-5">
-            <dl>
-                <dt>{% trans %}Username{% endtrans %}</dt>
-                <dd>{{ user.username }}&nbsp;</dd>&nbsp;
+                    <dt>{% trans %}First name{% endtrans %}</dt>
+                    <dd>{{ user.firstName }}&nbsp;</dd>&nbsp;
 
-                <dt>{% trans %}First name{% endtrans %}</dt>
-                <dd>{{ user.firstName }}&nbsp;</dd>&nbsp;
+                    <dt>{% trans %}Last name{% endtrans %}</dt>
+                    <dd>{{ user.lastName }}&nbsp;</dd>&nbsp;
 
-                <dt>{% trans %}Last name{% endtrans %}</dt>
-                <dd>{{ user.lastName }}&nbsp;</dd>&nbsp;
+                    <dt>{% trans %}Email{% endtrans %}</dt>
+                    <dd>{{ user.email }}&nbsp;</dd>&nbsp;
+                </dl>
+            </div>
 
-                <dt>{% trans %}Email{% endtrans %}</dt>
-                <dd>{{ user.email }}&nbsp;</dd>&nbsp;
-            </dl>
-        </div>
+            <div class="col-md-4">
+                <dl>
+                    <dt>{% trans %}Role{% endtrans %}</dt>
+                    <dd>
+                        {% if user.role == 'ROLE_ADMIN' %}
+                        {% trans %}Admin{% endtrans %}
+                    {% elseif user.role == 'ROLE_USER' %}
+                        {% trans %}User{% endtrans %}
+                        {% endif %}&nbsp;
+                    </dd>&nbsp;
 
-        <div class="col-md-4">
-            <dl>
-                <dt>{% trans %}Role{% endtrans %}</dt>
-                <dd>
-                    {% if user.role == 'ROLE_ADMIN' %}
-                    {% trans %}Admin{% endtrans %}
-                {% elseif user.role == 'ROLE_USER' %}
-                    {% trans %}User{% endtrans %}
-                    {% endif %}&nbsp;
-                </dd>&nbsp;
+                    <dt>{% trans %}Is active?{% endtrans %}</dt>
+                    <dd>
+                        {% if user.isActive %}
+                        <span class="custom-text-green"><b>{% trans %}Enable{% endtrans %}</b></span>
+                    {% else %}
+                        <span class="custom-text-red"><b>{% trans %}Disabled{% endtrans %}</b></span>
+                        {% endif %}&nbsp;
+                    </dd>&nbsp;
 
-                <dt>{% trans %}Is active?{% endtrans %}</dt>
-                <dd>
-                    {% if user.isActive %}
-                    <span class="custom-text-green"><b>{% trans %}Enable{% endtrans %}</b></span>
-                {% else %}
-                    <span class="custom-text-red"><b>{% trans %}Disabled{% endtrans %}</b></span>
-                    {% endif %}&nbsp;
-                </dd>&nbsp;
+                    <dt>{% trans %}Created{% endtrans %}</dt>
+                    <dd>{{ user.createdAt|date('d-m-Y H:i:s') }}&nbsp;</dd>&nbsp;
 
-                <dt>{% trans %}Created{% endtrans %}</dt>
-                <dd>{{ user.createdAt|date('d-m-Y H:i:s') }}&nbsp;</dd>&nbsp;
-
-                <dt>{% trans %}Updated{% endtrans %}</dt>
-                <dd>{{ user.updatedAt|date('d-m-Y H:i:s') }}&nbsp;</dd>&nbsp;
-            </dl>
+                    <dt>{% trans %}Updated{% endtrans %}</dt>
+                    <dd>{{ user.updatedAt|date('d-m-Y H:i:s') }}&nbsp;</dd>&nbsp;
+                </dl>
+            </div>
         </div>
 
         <div class="col-md-3">
+            <h3 class="text-center">{% trans %}Actions{% endtrans %}</h3>&nbsp;
+
             <p>
                 <a href="{{ path('user_edit', { id: user.id }) }}">
                     <button type="button" class="btn btn-lg btn-primary btn-block custom-action-button-big"
