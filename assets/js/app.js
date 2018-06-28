@@ -40,22 +40,22 @@ app = function () {
      * Confirmacion eliminacion usuario en vista info
      */
     function deleteLaunchConfimationInfo() {
-        let button = $('.delete-launch-confimation-info-js');
+        let form = $('#delete-user-info-view');
         bootbox.confirm({
-            message: button.data('messageText'),
+            message: form.data('messageText'),
             buttons: {
                 confirm: {
-                    label: button.data('confirmText'),
+                    label: form.data('confirmText'),
                     className: 'btn-danger'
                 },
                 cancel: {
-                    label: button.data('cancelText'),
+                    label: form.data('cancelText'),
                     className: 'btn-default'
                 }
             },
             callback: function (result) {
                 if (result === true) {
-                    $('#delete-user-info-view').submit();
+                    form.submit();
                 }
             }
         });
