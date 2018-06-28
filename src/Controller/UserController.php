@@ -22,8 +22,14 @@ class UserController extends Controller
             $query, $request->query->getInt('page', 1), 10
         );
 
+        $deleteForm = $this->createFormBuilder()
+            ->setAction($this->generateUrl('user_delete', ['id' => ':USER_ID']))
+            ->setMethod('DELETE')
+            ->getForm();
+
         return $this->render('user/index.html.twig', [
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'delete_form' => $deleteForm->createView()
         ]);
     }
 
