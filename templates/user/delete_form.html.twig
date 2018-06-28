@@ -1,0 +1,13 @@
+{{ form_start(delete_form, { 'attr': { 'id': form_id } }) }}
+{{ form_widget(delete_form) }}
+    {% if show_button %}
+        <button type="button"
+                class="btn btn-lg btn-danger btn-block custom-action-button-big delete-launch-confimation-info-js"
+                data-message-text="{% trans %}Are you sure you want to delete the user?{% endtrans %}"
+                data-confirm-text="{% trans %}Yes, delete the user{% endtrans %} {{ user.username }}"
+                data-cancel-text="{% trans %}No{% endtrans %}"
+                title="{% trans %}delete{% endtrans %}">
+            <i class="fa fa-trash-o fa-3x"></i>
+        </button>
+    {% endif %}
+{{ form_end(delete_form) }}

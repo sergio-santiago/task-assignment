@@ -55,7 +55,7 @@ app = function () {
             },
             callback: function (result) {
                 if (result === true) {
-                    button.closest('form').submit();//SI SE PONE ID A FORMULARIO CAMBIAR...
+                    $('#delete-user-info-view').submit();
                 }
             }
         });
