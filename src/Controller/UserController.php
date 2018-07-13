@@ -14,9 +14,15 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $em = $this->get('doctrine.orm.entity_manager');
-        $dql = 'SELECT u FROM App\Entity\User u ORDER BY u.id DESC';
-        $query = $em->createQuery($dql);
+        $searchQuery = $request->get('search-query');
+        if (!empty($searchQuery)) {
+            $finder = $this->container->get('fos_elastica.finder.app.user');
+            $query = $finder->createPaginatorAdapter($searchQuery);
+        } else {
+            $em = $this->get('doctrine.orm.entity_manager');
+            $dql = 'SELECT u FROM App\Entity\User u ORDER BY u.id DESC';
+            $query = $em->createQuery($dql);
+        }
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -30,7 +36,8 @@ class UserController extends Controller
 
         return $this->render('user/index.html.twig', [
             'pagination' => $pagination,
-            'delete_form' => $deleteForm->createView()
+            'delete_form' => $deleteForm->createView(),
+            'search_query' => $searchQuery
         ]);
     }
 
