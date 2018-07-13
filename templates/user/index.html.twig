@@ -9,7 +9,7 @@
                 <h2>{% trans %}Users{% endtrans %}</h2>
             </div>
             <span class="label label-primary custom-label-item-count">
-                {% trans %}Total records{% endtrans %}: {{ pagination.getTotalItemCount }}
+                {% trans %}Total records{% endtrans %}: <span id="users-count">{{ pagination.getTotalItemCount }}</span>
             </span>
             <div class="table-responsive">
                 <table class="table table-hover">

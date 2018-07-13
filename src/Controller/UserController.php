@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\FormError;
@@ -184,12 +185,26 @@ class UserController extends Controller
             $deleteForm->handleRequest($request);
 
             if ($deleteForm->isSubmitted() && $deleteForm->isValid()) {
-                $em->remove($user);
-                $em->flush();
-            }
+                $deleteResult = ['removed' => null, 'message' => null];
 
-            $translatedMessage = $this->get('translator')->trans('The user was successfully deleted');
-            $this->addFlash('success', $translatedMessage);
+                if ($user->getRole() == 'ROLE_USER') {
+                    $em->remove($user);
+                    $em->flush();
+
+                    $deleteResult['removed'] = true;
+                    $deleteResult['message'] = $this->get('translator')->trans('The user was successfully deleted');
+                } else {
+                    $deleteResult['removed'] = false;
+                    $deleteResult['message'] = $this->get('translator')->trans('Users with role admin can not be deleted');
+                }
+
+                if ($request->isXmlHttpRequest()) {
+                    return new JsonResponse($deleteResult);
+                } else {
+                    $flashType = ($deleteResult['removed']) ? 'success' : 'danger';
+                    $this->addFlash($flashType, $deleteResult['message']);
+                }
+            }
         } catch (\Exception $exception) {
             if ($_ENV['APP_ENV'] == "dev") {
                 throw $exception;
