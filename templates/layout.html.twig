@@ -5,17 +5,18 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('build/css/custom.css') }}">
-    {% block stylesheets_adhoc %}{% endblock %}{# para CSS especifico de hijos #}
+    {% block stylesheets_adhoc %}{% endblock %}
 {% endblock %}
 
 {% block body %}
     {% include 'layout_pieces/menu.html.twig' %}
+    {% include 'layout_pieces/loading_bar.html.twig' %}
     {% include 'layout_pieces/flash_messages.html.twig' %}
-    {% block main %}{% endblock %}{# para el contenido de la pagina mostrado por los hijos #}
+    {% block main %}{% endblock %}
     {% include 'layout_pieces/footer.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('build/js/app.js') }}"></script>
-    {% block javascripts_adhoc %}{% endblock %}{# para JS especifico de hijos #}
+    {% block javascripts_adhoc %}{% endblock %}
 {% endblock %}

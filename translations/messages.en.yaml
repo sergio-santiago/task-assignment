@@ -49,3 +49,5 @@ The user was successfully deleted: The user was successfully deleted
 An error occurred while deleting the user: An error occurred while deleting the user
 Yes, delete the user: Yes, delete the user
 No: No
+Users with role admin can not be deleted: Users with role admin can not be deleted
+Loading: Loading

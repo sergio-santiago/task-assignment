@@ -49,3 +49,5 @@ The user was successfully deleted: El usuario fue eliminado con éxito
 An error occurred while deleting the user: Se produjo un error al eliminar el usuario
 Yes, delete the user: Si, eliminar al usuario
 No: No
+Users with role admin can not be deleted: Usuarios con el rol administrador no pueden ser eliminados
+Loading: Cargando
