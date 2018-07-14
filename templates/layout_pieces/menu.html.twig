@@ -18,6 +18,14 @@
                         <li><a href="{{ path('user_add') }}">{% trans %}New user{% endtrans %}</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Tasks{% endtrans %}
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('task_index') }}">{% trans %}List tasks{% endtrans %}</a></li>
+                        <li><a href="{{ path('task_add') }}">{% trans %}New task{% endtrans %}</a></li>
+                    </ul>
+                </li>
             </ul>
             {% include 'layout_pieces/links_languages.html.twig' %}
         </div>
