@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="tasks")
@@ -20,11 +21,21 @@ class Task
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(
+     *     message="The title can not be empty"
+     * )
+     * @Assert\Length(
+     *     max="100",
+     *     maxMessage="The title has exceeded the maximum length"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(
+     *     message="The description can not be empty"
+     * )
      */
     private $description;
 
@@ -46,6 +57,9 @@ class Task
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tasks")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     * @Assert\NotBlank(
+     *     message="You must select a user from the list"
+     * )
      */
     private $user;
 

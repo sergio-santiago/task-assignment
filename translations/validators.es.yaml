@@ -13,3 +13,7 @@ The password can not be empty: La contraseña no puede estar vacía
 The password has exceeded the maximum length: La contraseña excede la longitud máxima
 Choose a valid role: Elige un rol válido
 You must select a role from the list: Debes selecionar un rol de la lista
+The title can not be empty: El título no puede estar vacío
+The title has exceeded the maximum length: El título ha excedido la longitud máxima
+The description can not be empty: La descripción no puede estar vacía
+You must select a user from the list: Debes seleccionar un usuario de la lista
