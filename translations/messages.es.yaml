@@ -52,3 +52,12 @@ No: No
 Users with role admin can not be deleted: Usuarios con el rol administrador no pueden ser eliminados
 Search user: Buscar usuario
 No results found: No se han encontrado resultados
+New task: Nueva tarea
+Title: Título
+Task title: Título de la tarea
+Select a user: Seleccione un usuario
+Description: Descripción
+Task description: Descripción de la tarea
+Create task: Crear tarea
+The task was created correctly: La tarea fue creada correctamente
+An error occurred while creating the task: Se produjo un error al crear la tarea
