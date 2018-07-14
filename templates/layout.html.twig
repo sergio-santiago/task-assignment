@@ -10,10 +10,10 @@
 
 {% block body %}
     {% include 'layout_pieces/menu.html.twig' %}
-    {% include 'layout_pieces/loading_bar.html.twig' %}
     {% include 'layout_pieces/flash_messages.html.twig' %}
     {% block main %}{% endblock %}
     {% include 'layout_pieces/footer.html.twig' %}
+    {% include 'layout_pieces/loading_spinner.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}
