@@ -1,0 +1,24 @@
+task_index:
+    path: /index
+    controller: App\Controller\TaskController::index
+
+task_add:
+    path: /add
+    controller: App\Controller\TaskController::add
+
+task_edit:
+    path: /edit/{id}
+    controller: App\Controller\TaskController::edit
+    requirements:
+        id: '\d+'
+
+task_view:
+    path: /view/{id}
+    controller: App\Controller\TaskController::view
+    requirements:
+        id: '\d+'
+
+task_delete:
+    path: /delete/{id}
+    controller: App\Controller\TaskController::delete
+    methods: [DELETE]
