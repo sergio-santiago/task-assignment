@@ -3,7 +3,7 @@ $fa-font-path: "~font-awesome/fonts";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "~font-awesome/scss/font-awesome";
 
-/* Load Spinner */
+/* Load Spinner --> */
 .lds-spinner {
   display: inline-block;
   position: relative;
@@ -99,3 +99,5 @@ $fa-font-path: "~font-awesome/fonts";
     opacity: 0;
   }
 }
+
+/* <-- Load Spinner */
