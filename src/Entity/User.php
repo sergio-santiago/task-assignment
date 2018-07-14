@@ -128,6 +128,11 @@ class User implements UserInterface
         $this->tasks = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->firstName . ' ' . $this->lastName . ' (' . $this->username . ')';
+    }
+
     public function getId()
     {
         return $this->id;
