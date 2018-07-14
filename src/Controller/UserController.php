@@ -12,6 +12,10 @@ use Symfony\Component\Form\FormError;
 
 class UserController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function index(Request $request)
     {
         $searchQuery = $request->get('search-query');
@@ -42,6 +46,8 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
     public function add(Request $request)
@@ -94,6 +100,9 @@ class UserController extends Controller
     }
 
     /**
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
     public function edit($id, Request $request)
@@ -148,6 +157,10 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function view($id)
     {
         $repository = $this->getDoctrine()->getRepository(User::class);
@@ -170,6 +183,9 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Exception
      */
     public function delete(Request $request, $id)
