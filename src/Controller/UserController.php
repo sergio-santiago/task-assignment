@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $searchQuery = $request->get('search-query');
         if (!empty($searchQuery)) {
-            $finder = $this->container->get('fos_elastica.finder.app.user');
+            $finder = $this->container->get('fos_elastica.finder.users.user');
             $query = $finder->createPaginatorAdapter($searchQuery);
         } else {
             $em = $this->get('doctrine.orm.entity_manager');

@@ -15,9 +15,15 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $em = $this->get('doctrine.orm.entity_manager');
-        $dql = 'SELECT t FROM App\Entity\Task t ORDER BY t.id DESC';
-        $query = $em->createQuery($dql);
+        $searchQuery = $request->get('search-query');
+        if (!empty($searchQuery)) {
+            $finder = $this->container->get('fos_elastica.finder.tasks.task');
+            $query = $finder->createPaginatorAdapter($searchQuery);
+        } else {
+            $em = $this->get('doctrine.orm.entity_manager');
+            $dql = 'SELECT t FROM App\Entity\Task t ORDER BY t.id DESC';
+            $query = $em->createQuery($dql);
+        }
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -26,6 +32,7 @@ class TaskController extends Controller
 
         return $this->render('task/index.html.twig', [
             'pagination' => $pagination,
+            'search_query' => $searchQuery
         ]);
     }
 
