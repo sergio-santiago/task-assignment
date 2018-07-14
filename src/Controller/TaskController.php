@@ -10,11 +10,23 @@ use Symfony\Component\HttpFoundation\Request;
 class TaskController extends Controller
 {
     /**
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->render('task/index.html.twig');
+        $em = $this->get('doctrine.orm.entity_manager');
+        $dql = 'SELECT t FROM App\Entity\Task t ORDER BY t.id DESC';
+        $query = $em->createQuery($dql);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, $request->query->getInt('page', 1), 15
+        );
+
+        return $this->render('task/index.html.twig', [
+            'pagination' => $pagination,
+        ]);
     }
 
     /**

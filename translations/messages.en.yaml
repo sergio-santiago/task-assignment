@@ -63,3 +63,7 @@ The task was created correctly: The task was created correctly
 An error occurred while creating the task: An error occurred while creating the task
 Tasks: Tasks
 List tasks: List tasks
+Date: Date
+Status: Status
+pending: pending
+completed: completed

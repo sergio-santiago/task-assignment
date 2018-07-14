@@ -1,1 +1,53 @@
-TODO
+{% extends 'layout.html.twig' %}
+
+{% block title %}{% trans %}List users{% endtrans %}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>{% trans %}Tasks{% endtrans %}</h2>
+            </div>
+            <span class="label label-primary custom-label-item-count">
+                {% trans %}Total records{% endtrans %}: <span id="tasks-count">{{ pagination.getTotalItemCount }}</span>
+            </span>
+            {% if pagination is not empty %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(pagination, 'Title'|trans, 't.title') }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Date'|trans, 't.createdAt') }}</th>
+                            <th class="text-center">{{ knp_pagination_sortable(pagination, 'Status'|trans, 't.status') }}</th>
+                            <th class="custom-table-header">{% trans %}User{% endtrans %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for task in pagination %}
+                            <tr data-id="{{ task.id }}">
+                                <td>{{ task.title }}</td>
+                                <td>{{ task.createdAt|date('d-m-Y H:i') }}</td>
+                                <td class="text-center">
+                                    {% if task.status %}
+                                        <i class="fa fa-check-square-o custom-text-green"
+                                           title="{% trans %}completed{% endtrans %}"></i>
+                                    {% else %}
+                                        <i class="fa fa-clock-o custom-text-red" title="{% trans %}pending{% endtrans %}"></i>
+                                    {% endif %}
+                                </td>
+                                <td><a href="{{ path('user_view', { 'id': task.user.id }) }}">{{ task.user }}</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            {% else %}
+                <h2>{% trans %}No results found{% endtrans %}</h2>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

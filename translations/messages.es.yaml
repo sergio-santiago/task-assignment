@@ -63,3 +63,7 @@ The task was created correctly: La tarea fue creada correctamente
 An error occurred while creating the task: Se produjo un error al crear la tarea
 Tasks: Tareas
 List tasks: Listar tareas
+Date: Fecha
+Status: Estado
+pending: pendiente
+completed: completada
