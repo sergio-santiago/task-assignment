@@ -90,10 +90,10 @@ app = function () {
             },
             callback: function (confirmation) {
                 if (confirmation === true) {
-                    let loadingBar = $('#loading-bar');
-                    loadingBar.fadeIn();
+                    let loadingSpinner = $('#under-lds-spinner');
+                    loadingSpinner.fadeIn(150);
                     $.post(url, data, function (result) {
-                        loadingBar.fadeOut();
+                        loadingSpinner.fadeOut(150);
                         let flashMessagesContainer = $('#flash-messages-container');
                         let alertType = '';
 
