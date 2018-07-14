@@ -1,34 +1,11 @@
-user_index:
-    path:
-        en: /user/index
-        es: /usuario/indice
-    controller: App\Controller\UserController::index
+user:
+  resource: 'routes/user.yml'
+  prefix:
+      en: '/user'
+      es: '/es/user'
 
-user_add:
-    path:
-        en: /user/add
-        es: /usuario/crear
-    controller: App\Controller\UserController::add
-
-user_edit:
-    path:
-        en: /user/edit/{id}
-        es: /usuario/editar/{id}
-    controller: App\Controller\UserController::edit
-    requirements:
-        id: '\d+'
-
-user_view:
-    path:
-        en: /user/view/{id}
-        es: /usuario/ver/{id}
-    controller: App\Controller\UserController::view
-    requirements:
-        id: '\d+'
-
-user_delete:
-    path:
-        en: /user/delete/{id}
-        es: /usuario/eliminar/{id}
-    controller: App\Controller\UserController::delete
-    methods: [DELETE]
+task:
+  resource: "routes/task.yml"
+  prefix:
+      en: '/task'
+      es: '/es/task'

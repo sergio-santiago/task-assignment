@@ -1,0 +1,24 @@
+user_index:
+    path: /index
+    controller: App\Controller\UserController::index
+
+user_add:
+    path: /add
+    controller: App\Controller\UserController::add
+
+user_edit:
+    path: /edit/{id}
+    controller: App\Controller\UserController::edit
+    requirements:
+        id: '\d+'
+
+user_view:
+    path: /view/{id}
+    controller: App\Controller\UserController::view
+    requirements:
+        id: '\d+'
+
+user_delete:
+    path: /delete/{id}
+    controller: App\Controller\UserController::delete
+    methods: [DELETE]
