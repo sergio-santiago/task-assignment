@@ -76,6 +76,52 @@ class TaskController extends Controller
 
     /**
      * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
+    public function edit($id, Request $request)
+    {
+        $em = $this->get('doctrine.orm.entity_manager');
+        $task = $em->getRepository(Task::class)->find($id);
+
+        if (!$task) {
+            $messageException = $this->get('translator')->trans('Task not found');
+            throw $this->createNotFoundException($messageException);
+        }
+
+        $form = $this->createForm(TaskType::class, $task);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $task->setStatus(false);
+                $em->flush();
+
+                $translatedMessage = $this->get('translator')->trans('The task was updated correctly');
+                $this->addFlash('success', $translatedMessage);
+
+                return $this->redirectToRoute('task_index');
+            } catch (\Exception $exception) {
+                if ($_ENV['APP_ENV'] == "dev") {
+                    throw $exception;
+                } else {
+                    $translatedError = $this->get('translator')->trans('An error occurred while updating the task');
+                    $this->addFlash('danger', $translatedError);
+                }
+            }
+        }
+
+        return $this->render('task/edit.html.twig', [
+            'task' => $task,
+            'form' => $form->createView()
+        ]);
+
+    }
+
+    /**
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function view($id)
