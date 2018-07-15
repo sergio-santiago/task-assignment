@@ -34,5 +34,17 @@
             </div>
         </div>
 
+        <div class="col-md-3">
+            <h3 class="text-center">{% trans %}Actions{% endtrans %}</h3>&nbsp;
+
+            <p>
+                <a href="{{ path('task_edit', { id: task.id }) }}">
+                    <button type="button" class="btn btn-lg btn-primary btn-block custom-action-button-big"
+                            title="{% trans %}edit{% endtrans %}">
+                        <i class="fa fa-pencil-square-o fa-3x"></i>
+                    </button>
+                </a>
+            </p>
+        </div>
     </div>
 {% endblock %}
