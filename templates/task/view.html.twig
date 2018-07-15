@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{% trans %}View user{% endtrans %}{% endblock %}
+
+{% block main %}
+    <div class="container well">
+
+        <div class="col-md-9">
+            <div class="col-md-9">
+                <h2>{{ task.title }}</h2><br>
+
+                <dl>
+                    <dt>{% trans %}Description{% endtrans %}</dt>
+                    <dd>{{ task.description }}&nbsp;</dd>&nbsp;
+
+                    <dt>{% trans %}User{% endtrans %}</dt>
+                    <dd><a href="{{ path('user_view', { 'id': task.user.id }) }}">{{ task.user }}</a>&nbsp;</dd>&nbsp;
+
+                    <dt>{% trans %}Status{% endtrans %}</dt>
+                    <dd>
+                        {% if task.status %}
+                        <span class="custom-text-green"><b>{% trans %}Completed{% endtrans %}</b></span>
+                    {% else %}
+                        <span class="custom-text-red"><b>{% trans %}Pending{% endtrans %}</b></span>
+                        {% endif %}&nbsp;
+                    </dd>&nbsp;
+
+                    <dt>{% trans %}Created{% endtrans %}</dt>
+                    <dd>{{ task.createdAt|date('d-m-Y H:i:s') }}&nbsp;</dd>&nbsp;
+
+                    <dt>{% trans %}Updated{% endtrans %}</dt>
+                    <dd>{{ task.updatedAt|date('d-m-Y H:i:s') }}&nbsp;</dd>&nbsp;
+                </dl>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

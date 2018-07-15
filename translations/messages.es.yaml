@@ -68,3 +68,6 @@ Status: Estado
 pending: pendiente
 completed: completada
 Search task: Buscar tarea
+Task not found: Tarea no encontrada
+Pending: Pendiente
+Completed: Completada

@@ -73,4 +73,24 @@ class TaskController extends Controller
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function view($id)
+    {
+        $repository = $this->getDoctrine()->getRepository(Task::class);
+        $task = $repository->find($id);
+
+        if (!$task) {
+            $messageException = $this->get('translator')->trans('Task not found');
+            throw $this->createNotFoundException($messageException);
+        }
+
+        return $this->render('task/view.html.twig', [
+            'task' => $task
+        ]);
+    }
+
 }

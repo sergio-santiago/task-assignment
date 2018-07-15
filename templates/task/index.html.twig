@@ -37,14 +37,15 @@
                         <tbody>
                         {% for task in pagination %}
                             <tr data-id="{{ task.id }}">
-                                <td>{{ task.title }}</td>
+                                <td><a href="{{ path('task_view', { 'id': task.id }) }}">{{ task.title }}</a></td>
                                 <td>{{ task.createdAt|date('d-m-Y H:i') }}</td>
                                 <td class="text-center">
                                     {% if task.status %}
                                         <i class="fa fa-check-square-o custom-text-green"
                                            title="{% trans %}completed{% endtrans %}"></i>
                                     {% else %}
-                                        <i class="fa fa-clock-o custom-text-red" title="{% trans %}pending{% endtrans %}"></i>
+                                        <i class="fa fa-clock-o custom-text-red"
+                                           title="{% trans %}pending{% endtrans %}"></i>
                                     {% endif %}
                                 </td>
                                 <td><a href="{{ path('user_view', { 'id': task.user.id }) }}">{{ task.user }}</a></td>

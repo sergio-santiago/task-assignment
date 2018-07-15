@@ -68,3 +68,6 @@ Status: Status
 pending: pending
 completed: completed
 Search task: Search task
+Task not found: Task not found
+Pending: Pending
+Completed: Completed
