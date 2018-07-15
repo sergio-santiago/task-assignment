@@ -9,7 +9,7 @@ app = function () {
             isActiveCheckboxPermission();
         });
 
-        $('.delete-launch-confimation-info-js').click(function () {
+        $('.user-delete-launch-confimation-info-js').click(function () {
             deleteLaunchConfimationInfo();
         });
 
