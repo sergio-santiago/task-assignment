@@ -134,9 +134,56 @@ class TaskController extends Controller
             throw $this->createNotFoundException($messageException);
         }
 
+        $deleteForm = $this->createFormBuilder()
+            ->setAction($this->generateUrl('task_delete', ['id' => $task->getId()]))
+            ->setMethod('DELETE')
+            ->getForm();
+
         return $this->render('task/view.html.twig', [
-            'task' => $task
+            'task' => $task,
+            'delete_form' => $deleteForm->createView()
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Exception
+     */
+    public function delete(Request $request, $id)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository(Task::class);
+            $task = $repository->find($id);
+
+            if (!$task) {
+                $messageException = $this->get('translator')->trans('Task not found');
+                throw $this->createNotFoundException($messageException);
+            }
+
+            $deleteForm = $this->createFormBuilder()
+                ->setAction($this->generateUrl('task_delete', ['id' => $task->getId()]))
+                ->setMethod('DELETE')
+                ->getForm();
+
+            $deleteForm->handleRequest($request);
+
+            if ($deleteForm->isSubmitted() && $deleteForm->isValid()) {
+                $em->remove($task);
+                $em->flush();
+                $this->addFlash('success', $this->get('translator')->trans('The task was successfully deleted'));
+            }
+        } catch (\Exception $exception) {
+            if ($_ENV['APP_ENV'] == "dev") {
+                throw $exception;
+            } else {
+                $translatedError = $this->get('translator')->trans('An error occurred while deleting the task');
+                $this->addFlash('danger', $translatedError);
+            }
+        }
+
+        return $this->redirectToRoute('task_index');
+    }
 }

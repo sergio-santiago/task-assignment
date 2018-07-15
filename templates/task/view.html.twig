@@ -45,6 +45,10 @@
                     </button>
                 </a>
             </p>
+
+            <p>
+                {{ include('task/delete_form.html.twig', { form_id: 'delete-task-info-view', show_button: true }) }}
+            </p>
         </div>
     </div>
 {% endblock %}

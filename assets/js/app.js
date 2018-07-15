@@ -10,12 +10,16 @@ app = function () {
         });
 
         $('.user-delete-launch-confimation-info-js').click(function () {
-            deleteLaunchConfimationInfo();
+            deleteUserLaunchConfimationInfo();
         });
 
         $('.delete-user-ajax-button-js').click(function () {
             let row = $(this).parents('tr');
             deleteUserAjax(row);
+        });
+
+        $('.task-delete-launch-confimation-info-js').click(function () {
+            deleteTaskLaunchConfimationInfo()
         });
     };
 
@@ -44,7 +48,7 @@ app = function () {
     /**
      * Confirmacion eliminacion usuario en vista info
      */
-    function deleteLaunchConfimationInfo() {
+    function deleteUserLaunchConfimationInfo() {
         let form = $('#delete-user-info-view');
         bootbox.confirm({
             message: form.data('messageText'),
@@ -119,6 +123,31 @@ app = function () {
                     }).fail(function () {
                         alert('ERROR');
                     });
+                }
+            }
+        });
+    }
+
+    /**
+     * Confirmacion eliminacion tarea en vista info
+     */
+    function deleteTaskLaunchConfimationInfo() {
+        let form = $('#delete-task-info-view');
+        bootbox.confirm({
+            message: form.data('messageText'),
+            buttons: {
+                confirm: {
+                    label: form.data('confirmText'),
+                    className: 'btn-danger'
+                },
+                cancel: {
+                    label: form.data('cancelText'),
+                    className: 'btn-default'
+                }
+            },
+            callback: function (result) {
+                if (result === true) {
+                    form.submit();
                 }
             }
         });

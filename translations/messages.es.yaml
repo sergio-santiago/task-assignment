@@ -75,3 +75,7 @@ The task was updated correctly: La tarea se actualizó correctamente
 An error occurred while updating the task: Se produjo un error al actualizar la tarea
 Edit task: Editar tarea
 Update task: Actualizar tarea
+Are you sure you want to delete the task?: ¿Estás seguro de que deseas eliminar la tarea?
+Yes, delete the task: Sí, eliminar la tarea
+The task was successfully deleted: La tarea fue eliminada exitosamente
+An error occurred while deleting the task: Se produjo un error al eliminar la tarea

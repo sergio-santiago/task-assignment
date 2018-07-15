@@ -75,3 +75,7 @@ The task was updated correctly: The task was updated correctly
 An error occurred while updating the task: An error occurred while updating the task
 Edit task: Edit task
 Update task: Update task
+Are you sure you want to delete the task?: Are you sure you want to delete the task?
+Yes, delete the task: Yes, delete the task
+The task was successfully deleted: The task was successfully deleted
+An error occurred while deleting the task: An error occurred while deleting the task
