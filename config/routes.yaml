@@ -9,3 +9,9 @@ task:
   prefix:
       en: '/task'
       es: '/es/task'
+
+home:
+  resource: "routes/home.yml"
+  prefix:
+      en: ''
+      es: '/es'
