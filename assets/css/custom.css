@@ -75,3 +75,15 @@ body {
 body {
     background-image: url("../../public/background_pattern.png");
 }
+
+.loginbox {
+    margin-top: 10%;
+}
+
+.login-panel-body {
+    padding-top: 30px;
+}
+
+.input-group-login {
+    margin-bottom: 25px;
+}

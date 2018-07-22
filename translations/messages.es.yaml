@@ -79,3 +79,8 @@ Are you sure you want to delete the task?: ¿Estás seguro de que deseas elimina
 Yes, delete the task: Sí, eliminar la tarea
 The task was successfully deleted: La tarea fue eliminada exitosamente
 An error occurred while deleting the task: Se produjo un error al eliminar la tarea
+Login: Iniciar sesión
+Invalid credentials.: Credenciales no válidas
+username: nombre de usuario
+password: contraseña
+Logout: Cerrar sesión
