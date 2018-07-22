@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{% trans %}Login{% endtrans %}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 loginbox">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">{% trans %}Login{% endtrans %}</div>
+                </div>
+                <div class="panel-body login-panel-body">
+                    {% if error %}
+                        <div class="alert alert-danger col-sm-12">
+                            {{ error.messageKey|trans }}
+                        </div>
+                    {% endif %}
+                    <form action="{{ path('login') }}" method="post" role="form">
+
+                        <div class="input-group input-group-login">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" name="_username"
+                                   value="{{ last_username }}" placeholder="{% trans %}username{% endtrans %}">
+                        </div>
+
+                        <div class="input-group input-group-login">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" name="_password"
+                                   placeholder="{% trans %}password{% endtrans %}">
+                        </div>
+
+                        <input type="hidden" name="_target_path" value="homepage">
+
+                        <button type="submit" class="btn btn-success btn-block">
+                            {% trans %}Login{% endtrans %}
+                            <i class="fa fa-sign-in"></i>
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

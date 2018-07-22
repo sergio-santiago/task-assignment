@@ -79,3 +79,8 @@ Are you sure you want to delete the task?: Are you sure you want to delete the t
 Yes, delete the task: Yes, delete the task
 The task was successfully deleted: The task was successfully deleted
 An error occurred while deleting the task: An error occurred while deleting the task
+Login: Login
+Invalid credentials.: Invalid credentials
+username: username
+password: password
+Logout: Logout
