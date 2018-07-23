@@ -6,28 +6,57 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">{% trans %}Task Assignment{% endtrans %}</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">{% trans %}Task Assignment{% endtrans %}</a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Users{% endtrans %}
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('user_index') }}">{% trans %}List users{% endtrans %}</a></li>
-                        <li><a href="{{ path('user_add') }}">{% trans %}New user{% endtrans %}</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Tasks{% endtrans %}
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('task_index') }}">{% trans %}List tasks{% endtrans %}</a></li>
-                        <li><a href="{{ path('task_add') }}">{% trans %}New task{% endtrans %}</a></li>
-                    </ul>
-                </li>
+        <div class="collapse navbar-collapse">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <ul class="nav navbar-nav">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Users{% endtrans %}
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('user_index') }}">{% trans %}List users{% endtrans %}</a></li>
+                                <li><a href="{{ path('user_add') }}">{% trans %}New user{% endtrans %}</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Tasks{% endtrans %}
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('task_index') }}">{% trans %}List tasks{% endtrans %}</a></li>
+                                <li><a href="{{ path('task_add') }}">{% trans %}New task{% endtrans %}</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Tasks{% endtrans %}
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">{% trans %}My tasks{% endtrans %}</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li>
+                        <a>
+                            {{ app.user.username }}
+                            <i class="fa fa-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('logout') }}">
+                            {% trans %}Logout{% endtrans %}
+                            <i class="fa fa-sign-out"></i>
+                        </a>
+                    </li>
+                {% endif %}
+                {% include 'layout_pieces/links_languages.html.twig' %}
             </ul>
-            {% include 'layout_pieces/links_languages.html.twig' %}
         </div>
     </div>
 </nav>

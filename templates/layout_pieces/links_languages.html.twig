@@ -2,13 +2,14 @@
 {% set route_params = app.request.attributes.get('_route_params') %}
 {% set params = route_params|merge(app.request.query.all) %}
 
-<ul class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Language{% endtrans %}
-            <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path(route, params|merge({ _locale: 'en' })) }}">{% trans %}English{% endtrans %}</a></li>
-            <li><a href="{{ path(route, params|merge({ _locale: 'es' })) }}">{% trans %}Spanish{% endtrans %}</a></li>
-        </ul>
-    </li>
-</ul>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        {% trans %}Language{% endtrans %}
+        <i class="fa fa-language"></i>
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="{{ path(route, params|merge({ _locale: 'en' })) }}">{% trans %}English{% endtrans %}</a></li>
+        <li><a href="{{ path(route, params|merge({ _locale: 'es' })) }}">{% trans %}Spanish{% endtrans %}</a></li>
+    </ul>
+</li>
