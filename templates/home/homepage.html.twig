@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{% trans %}Homepage{% endtrans %}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="page-header">
+            <h2>{% trans %}Welcome{% endtrans %} {{ app.user.firstName }} {{ app.user.lastName }}</h2>
+        </div>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        <i class="fa fa-user"></i>
+                        {% trans %}User administration{% endtrans %}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <h4><a href="{{ path('user_index') }}">{% trans %}List users{% endtrans %}</a></h4>
+                    <h4><a href="{{ path('user_add') }}">{% trans %}New user{% endtrans %}</a></h4>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        <i class="fa fa-tasks"></i>
+                        {% trans %}Task management{% endtrans %}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <h4><a href="{{ path('task_index') }}">{% trans %}List tasks{% endtrans %}</a></h4>
+                    <h4><a href="{{ path('task_add') }}">{% trans %}New task{% endtrans %}</a></h4>
+                </div>
+            </div>
+
+        {% else %}
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        <i class="fa fa-tasks"></i>
+                        {% trans %}Tasks{% endtrans %}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <h4><a href="#">{% trans %}My tasks{% endtrans %}</a></h4>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
