@@ -1,24 +1,24 @@
 task_index:
-    path: /index
+    path: task/index
     controller: App\Controller\TaskController::index
 
 task_add:
-    path: /add
+    path: task/add
     controller: App\Controller\TaskController::add
 
 task_edit:
-    path: /edit/{id}
+    path: task/edit/{id}
     controller: App\Controller\TaskController::edit
     requirements:
         id: '\d+'
 
 task_view:
-    path: /view/{id}
+    path: task/view/{id}
     controller: App\Controller\TaskController::view
     requirements:
         id: '\d+'
 
 task_delete:
-    path: /delete/{id}
+    path: task/delete/{id}
     controller: App\Controller\TaskController::delete
     methods: [DELETE]

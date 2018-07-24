@@ -1,17 +1,17 @@
 user:
   resource: 'routes/user.yml'
   prefix:
-      en: '/user'
-      es: '/es/user'
+      en: '/'
+      es: '/es'
 
 task:
-  resource: "routes/task.yml"
+  resource: 'routes/task.yml'
   prefix:
-      en: '/task'
-      es: '/es/task'
+      en: '/'
+      es: '/es'
 
 home:
-  resource: "routes/home.yml"
+  resource: 'routes/home.yml'
   prefix:
-      en: ''
+      en: '/'
       es: '/es'
