@@ -22,7 +22,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * )
  * @ORM\HasLifecycleCallbacks()
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -126,6 +126,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
+        $this->isActive = true;
     }
 
     public function __toString()
@@ -274,12 +275,12 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return [$this->role];
     }
 
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return null;
     }
 
     public function eraseCredentials()
@@ -316,5 +317,31 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->isActive
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->isActive
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized, array('allowed_classes' => false));
     }
 }
