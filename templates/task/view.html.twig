@@ -34,6 +34,7 @@
             </div>
         </div>
 
+        {% if is_granted('ROLE_ADMIN') %}
         <div class="col-md-3">
             <h3 class="text-center">{% trans %}Actions{% endtrans %}</h3>&nbsp;
 
@@ -50,5 +51,6 @@
                 {{ include('task/delete_form.html.twig', { form_id: 'delete-task-info-view', show_button: true }) }}
             </p>
         </div>
+        {% endif %}
     </div>
 {% endblock %}
