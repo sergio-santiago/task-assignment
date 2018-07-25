@@ -34,4 +34,16 @@ To install the application and everything works correctly you need to have insta
 TODO
 
 ## Screenshots of some views
-TODO
+![1](https://image.ibb.co/d0CVUT/Captura_de_pantalla_de_2018_07_25_19_08_21.png) 
+![2](https://image.ibb.co/kY8R3o/Captura_de_pantalla_de_2018_07_25_19_08_33.png)
+![3](https://image.ibb.co/fDvTG8/Captura_de_pantalla_de_2018_07_25_19_08_50.png)
+![4](https://image.ibb.co/k7uNb8/Captura_de_pantalla_de_2018_07_25_19_09_21.png)
+![5](https://image.ibb.co/cA8tio/Captura_de_pantalla_de_2018_07_25_19_09_50.png)
+![6](https://image.ibb.co/goiR3o/Captura_de_pantalla_de_2018_07_25_19_10_13.png)
+![7](https://image.ibb.co/kZzNb8/Captura_de_pantalla_de_2018_07_25_19_10_28.png)
+![8](https://image.ibb.co/gpG2b8/Captura_de_pantalla_de_2018_07_25_19_11_15.png)
+![9](https://image.ibb.co/fStR3o/Captura_de_pantalla_de_2018_07_25_19_11_26.png)
+![10](https://image.ibb.co/iuG2b8/Captura_de_pantalla_de_2018_07_25_19_11_46.png)
+![11](https://image.ibb.co/eShKOo/Captura_de_pantalla_de_2018_07_25_19_12_04.png)
+![12](https://image.ibb.co/fFcKOo/Captura_de_pantalla_de_2018_07_25_19_12_11.png)
+![13](https://image.ibb.co/ktAH9T/Captura_de_pantalla_de_2018_07_25_19_14_00.png)
