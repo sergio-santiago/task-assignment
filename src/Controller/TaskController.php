@@ -186,4 +186,17 @@ class TaskController extends Controller
 
         return $this->redirectToRoute('task_index');
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function myTasks(Request $request)
+    {
+        //TODO
+
+        return $this->render('task/my_tasks.html.twig', [
+
+        ]);
+    }
 }

@@ -22,3 +22,7 @@ task_delete:
     path: task/delete/{id}
     controller: App\Controller\TaskController::delete
     methods: [DELETE]
+
+my_tasks:
+    path: task/my-tasks
+    controller: App\Controller\TaskController::myTasks
