@@ -1,11 +1,11 @@
 # Task assignment
 Web application for assignment of tasks developed in [Symfony 4](https://symfony.com/4).
-* [Which is used in the project]()
-* [General functionality]()
-* [Installation]()
-  * [What do you need to have installed previously?]()
-  * [Installation and start-up instructions]()
-* [Screenshots of some views]()
+* [Which is used in the project](https://github.com/sergio-santiago/task-assignment#which-is-used-in-the-project)
+* [General functionality](https://github.com/sergio-santiago/task-assignment#general-functionality)
+* [Installation](https://github.com/sergio-santiago/task-assignment#installation)
+  * [What do you need to have installed previously?](https://github.com/sergio-santiago/task-assignment#what-do-you-need-to-have-installed-previously)
+  * [Installation and start-up instructions](https://github.com/sergio-santiago/task-assignment#installation-and-start-up-instructions)
+* [Screenshots of some views](https://github.com/sergio-santiago/task-assignment#screenshots-of-some-views)
 ## Which is used in the project
 * [Composer](https://getcomposer.org/) to manage Symfony dependencies.
 * [Bootstrap 3](https://getbootstrap.com/docs/3.3/) as front-end component library.
