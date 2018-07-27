@@ -14,8 +14,11 @@
                     <dd>{{ task.description }}&nbsp;</dd>&nbsp;
 
                     <dt>{% trans %}User{% endtrans %}</dt>
-                    <dd><a href="{{ path('user_view', { 'id': task.user.id }) }}">{{ task.user }}</a>&nbsp;</dd>&nbsp;
-
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <dd><a href="{{ path('user_view', { 'id': task.user.id }) }}">{{ task.user }}</a>&nbsp;</dd>&nbsp;
+                    {% else %}
+                        <dd>{{ task.user }}&nbsp;</dd>&nbsp;
+                    {% endif %}
                     <dt>{% trans %}Status{% endtrans %}</dt>
                     <dd>
                         {% if task.status %}
