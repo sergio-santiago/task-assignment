@@ -26,3 +26,8 @@ task_delete:
 my_tasks:
     path: task/my-tasks
     controller: App\Controller\TaskController::myTasks
+
+task_complete:
+    path: task/complete/{id}
+    controller: App\Controller\TaskController::complete
+    methods: [POST]
