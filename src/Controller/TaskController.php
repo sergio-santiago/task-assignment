@@ -193,10 +193,50 @@ class TaskController extends Controller
      */
     public function myTasks(Request $request)
     {
-        //TODO
+        $userId = $this->getUser()->getId();
+        $searchQuery = $request->get('search-query');
+        $em = $this->get('doctrine.orm.entity_manager');
+        $repository = $em->getRepository(Task::class);
+
+        if (!empty($searchQuery)) {
+            $query = $repository->createQueryBuilder('t')
+                ->join('t.user', 'u')
+                ->where('u.id = :userId')
+                ->andWhere('t.title LIKE :taskTitle')
+                ->orderBy('t.id', 'DESC')
+                ->setParameters([
+                    'userId' => $userId,
+                    'taskTitle' => '%' . $searchQuery . '%'
+                ])
+                ->getQuery();
+        } else {
+            $query = $repository->createQueryBuilder('t')
+                ->join('t.user', 'u')
+                ->where('u.id = :userId')
+                ->orderBy('t.id', 'DESC')
+                ->setParameter('userId', $userId)
+                ->getQuery();
+        }
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, $request->query->getInt('page', 1), 15
+        );
+
+        $completeForm = $this->createFormBuilder()
+            ->setAction($this->generateUrl('task_complete', ['id' => ':TASK_ID']))
+            ->setMethod('POST')
+            ->getForm();
 
         return $this->render('task/my_tasks.html.twig', [
-
+            'pagination' => $pagination,
+            'search_query' => $searchQuery,
+            'complete_form' => $completeForm->createView()
         ]);
+    }
+
+    public function complete(Request $request, $id)
+    {
+        //TODO
     }
 }
