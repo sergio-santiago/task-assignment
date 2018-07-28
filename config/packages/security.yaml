@@ -26,5 +26,6 @@ security:
          - { path: '^/([a-z]{2}/)?login', roles: IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: '^/([a-z]{2}/)?task/view', roles: [ROLE_ADMIN, ROLE_USER] }
          - { path: '^/([a-z]{2}/)?task/my-tasks', roles: [ROLE_USER] }
+         - { path: '^/([a-z]{2}/)?task/complete', roles: [ROLE_USER] }
          - { path: '^/([a-z]{2}/)?task', roles: ROLE_ADMIN }
          - { path: '^/([a-z]{2}/)?user', roles: ROLE_ADMIN }

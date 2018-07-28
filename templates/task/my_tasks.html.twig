@@ -51,12 +51,14 @@
                                 <td class="text-center">
                                     {% if task.status ==true %}
                                         <button type="button"
-                                                class="complete-task-js btn btn-success disabled">
+                                                class="complete-task-js btn btn-success disabled"
+                                                data-text-toogle="{% trans %}Complete{% endtrans %}">
                                             {% trans %}Completed{% endtrans %}
                                         </button>
                                     {% else %}
                                         <button type="button"
-                                                class="complete-task-js btn btn-primary">
+                                                class="complete-task-js btn btn-primary"
+                                                data-text-toogle="{% trans %}Completed{% endtrans %}">
                                             {% trans %}Complete{% endtrans %}
                                         </button>
                                     {% endif %}
