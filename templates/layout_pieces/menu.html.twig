@@ -8,7 +8,7 @@
             </button>
             <a class="navbar-brand" href="{{ path('homepage') }}">{% trans %}Task Assignment{% endtrans %}</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="myNavbar">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <ul class="nav navbar-nav">
                     {% if is_granted('ROLE_ADMIN') %}
