@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Task;
 use App\Form\TaskType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class TaskController extends Controller
@@ -237,6 +238,39 @@ class TaskController extends Controller
 
     public function complete(Request $request, $id)
     {
-        //TODO
+        $completeResult = ['completed' => false, 'message' => null];
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Task::class);
+        $task = $repository->find($id);
+
+        if (!$task) {
+            $messageException = $this->get('translator')->trans('Task not found');
+            throw $this->createNotFoundException($messageException);
+        }
+
+        $completeForm = $this->createFormBuilder()
+            ->setAction($this->generateUrl('task_complete', ['id' => $task->getId()]))
+            ->setMethod('POST')
+            ->getForm();
+
+        $completeForm->handleRequest($request);
+
+        if ($completeForm->isSubmitted() && $completeForm->isValid()) {
+            if ($request->isXmlHttpRequest()) {
+                try {
+                    $task->setStatus(true);
+                    $em->persist($task);
+                    $em->flush();
+
+                    $completeResult['completed'] = true;
+                    $completeResult['message'] = $this->get('translator')->trans('The task has been completed');
+                } catch (\Exception $exception) {
+                    $completeResult['message'] = $exception->getMessage();
+                }
+            }
+        }
+
+        return new JsonResponse($completeResult);
     }
 }
