@@ -21,6 +21,11 @@ app = function () {
         $('.task-delete-launch-confimation-info-js').click(function () {
             deleteTaskLaunchConfimationInfo()
         });
+
+        $('.complete-task-js').click(function () {
+            let row = $(this).parents('tr');
+            completeTaskAjax(row);
+        });
     };
 
     /**
@@ -122,6 +127,7 @@ app = function () {
                         htmlFlashMessage.hide().appendTo(flashMessagesContainer).fadeIn('slow');
                     }).fail(function () {
                         alert('ERROR');
+                        loadingSpinner.fadeOut(150);
                     });
                 }
             }
@@ -148,6 +154,69 @@ app = function () {
             callback: function (result) {
                 if (result === true) {
                     form.submit();
+                }
+            }
+        });
+    }
+
+    function completeTaskAjax(row) {
+        let taskId = row.data('id');
+        let form = $('#complete-task-form-ajax');
+        let url = form.attr('action').replace(':TASK_ID', taskId);
+        let data = form.serialize();
+
+        bootbox.confirm({
+            message: form.data('messageText'),
+            buttons: {
+                confirm: {
+                    label: form.data('confirmText'),
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: form.data('cancelText'),
+                    className: 'btn-default'
+                }
+            },
+            callback: function (confirmation) {
+                if (confirmation === true) {
+                    let loadingSpinner = $('#under-lds-spinner');
+                    loadingSpinner.fadeIn(150);
+                    $.post(url, data, function (result) {
+                        loadingSpinner.fadeOut(150);
+                        let flashMessagesContainer = $('#flash-messages-container');
+                        let alertType = '';
+
+                        if (result.completed) {
+                            let icon = row.find('.status-icon-js');
+                            let button = row.find('.complete-task-js');
+                            let buttonNewText = button.data('text-toogle');
+                            icon.removeClass('custom-text-red');
+                            icon.addClass('custom-text-green');
+                            icon.removeClass('fa-clock-o');
+                            icon.addClass('fa-check-square-o');
+                            button.removeClass('btn-primary');
+                            button.addClass('btn-success');
+                            button.html(buttonNewText);
+                            button.prop('disabled', true);
+
+                            alertType = 'alert-success';
+                        } else {
+                            alertType = 'alert-danger';
+                        }
+
+                        let htmlFlashMessage = $(
+                            '<div class="alert ' + alertType + ' alert-dismissible fade in" role="alert">' +
+                            result.message +
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                            '<span aria-hidden="true">&times;</span>' +
+                            '</button>' +
+                            '</div>'
+                        );
+                        htmlFlashMessage.hide().appendTo(flashMessagesContainer).fadeIn('slow');
+                    }).fail(function () {
+                        alert('ERROR');
+                        loadingSpinner.fadeOut(150);
+                    });
                 }
             }
         });
