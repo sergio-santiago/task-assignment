@@ -32,8 +32,17 @@ To install the application and everything works correctly you need to have insta
 6. [Elasticsearch](https://www.elastic.co/downloads/elasticsearch)
 ### Installation and start-up instructions
 1. Clone the project from the repository: `$ git clone https://github.com/sergio-santiago/task-assignment.git`
-TODO
-
+2. In the project directory run the `composer install` command to install the composer dependencies
+3. Run the `yarn install` command to install YARN dependencies
+4. Make sure you have MySQL up, in the next steps you will establish connection with it
+5. Configure the `.env` file with the values to create the database. You should modify this line ```DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name```
+6. Execute the `php bin/console doctrine:database:create` command to create the database with the values configured in the previous step
+7. Execute the `php bin/console doctrine:migrations:migrate` command to create tables in the database
+8. Execute the command `yarn run encore dev` to compile the assets of the project
+9. Execute the `php bin/console app:create:admin` command to start the wizard that will help you create a user with which to access the application
+10. Run the project with the command `php bin/console server:run`
+11. Access with your browser to the address http://127.0.0.1:8000
+12. You can now access the system with the user that you have previously created
 ## Screenshots of some views
 ![1](https://image.ibb.co/d0CVUT/Captura_de_pantalla_de_2018_07_25_19_08_21.png) 
 ![2](https://image.ibb.co/kY8R3o/Captura_de_pantalla_de_2018_07_25_19_08_33.png)
