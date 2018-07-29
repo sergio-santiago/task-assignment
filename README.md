@@ -24,11 +24,12 @@ The application has 2 types of users, users with administrator role and users wi
 ## Installation
 ### What do you need to have installed previously?
 To install the application and everything works correctly you need to have installed the following
-1. [Composer](https://getcomposer.org/)
-2. [Node.js](https://nodejs.org/en/download/)
-3. [YARN](https://yarnpkg.com/lang/en/docs/install/#debian-stable)
-4. [JAVA](https://www.java.com/en/download/help/download_options.xml)
-5. [Elasticsearch](https://www.elastic.co/downloads/elasticsearch)
+1. [XAMPP](https://www.apachefriends.org/es/index.html)
+2. [Composer](https://getcomposer.org/download/)
+3. [Node.js](https://nodejs.org/en/download/)
+4. [YARN](https://yarnpkg.com/lang/en/docs/install/#windows-stable)
+5. [JAVA](https://www.java.com/es/download/)
+6. [Elasticsearch](https://www.elastic.co/downloads/elasticsearch)
 ### Installation and start-up instructions
 1. Clone the project from the repository: `$ git clone https://github.com/sergio-santiago/task-assignment.git`
 TODO
