@@ -8,7 +8,7 @@
         "node-sass": "^4.9.0",
         "sass-loader": "^7.0.3"
     },
-    "license": "UNLICENSED",
+    "license": "MIT",
     "private": true,
     "scripts": {
         "dev-server": "encore dev-server",
