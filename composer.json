@@ -1,6 +1,14 @@
 {
+    "name": "sergio-santiago/task-assignment",
+    "description": "Task assignment web app with roles and search (PHP, Symfony 4, MySQL and Elasticsearch)",
     "type": "project",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergio Santiago Henares",
+            "email": "sersanhen@gmail.com"
+        }
+    ],
     "require": {
         "php": "^7.1.3",
         "ext-iconv": "*",
